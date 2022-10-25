@@ -1,0 +1,11 @@
+﻿@model IEnumerable<fsShop.Models.NhanHang>
+<p class="lead"> Nhãn Hàng</p>
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("SPTheoNhanHang", "Website", new { id = item.MaNhanHang})" class="list-group-item">
+            @item.Ten
+        </a>
+    }
+</div>
+
