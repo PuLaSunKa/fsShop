@@ -94,10 +94,10 @@
                         @Html.ActionLink("Trang Chủ", "Index", "Home")
                     </li>
                     <li class="menu-item-has-children">
-                        @Html.ActionLink("Sản Phẩm", "Index", "SanPham")
+                        @Html.ActionLink("Sản Phẩm", "Index", "Website")
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#">Bài Viết</a>
+                        @Html.ActionLink("Bài Viết", "BaiViet", "Website")
                     </li>
                     <li class="menu-item-has-children">
                         <a href="my-account.html">my account</a>
@@ -172,12 +172,12 @@
                         <div class="col-lg-4">
                             <div class="cart_area">
                                 <div class="cart_link">
-                                    <a href="#"><i class="fa fa-shopping-basket"></i>0 item(s)</a>
+                                    @Html.Action("GiohangPartial", "Giohang")
                                     <!--mini cart-->
-                                    <!--<div class="mini_cart">
+                                    <div class="mini_cart">
                                         <div class="cart_item top">
                                             <div class="cart_img">
-                                                <a href="#"><img src="~/Content/img/s-product/product.jpg" alt=""></a>
+                                                <a href="@Url.Action("GioHang","GioHang")"><img src="~/Content/img/s-product/product.jpg" alt=""></a>
                                             </div>
                                             <div class="cart_info">
                                                 <a href="#">Apple iPhone SE 16GB</a>
@@ -206,7 +206,7 @@
                                         <div class="cart_button checkout">
                                             <a href="#">Thanh Toán</a>
                                         </div>
-                                    </div>-->
+                                    </div>
                                     <!--mini cart end-->
                                 </div>
                             </div>
@@ -222,11 +222,11 @@
                                         <a href="@Url.Action("Index", "Home")">Home <i class="fa fa-angle-down"></i></a>
                                     </li>
                                     <li class="mega_items">
-                                        <a href="@Url.Action("Index", "SanPham")">Sản Phẩm <i class="fa fa-angle-down"></i></a>
+                                        <a href="@Url.Action("Index", "Website")">Sản Phẩm <i class="fa fa-angle-down"></i></a>
                                       
                                     </li>
                                     <li>
-                                        <a href="#">Bài Viết <i class="fa fa-angle-down"></i></a>
+                                        <a href="@Url.Action("BaiViet", "Website")">Bài Viết <i class="fa fa-angle-down"></i></a>
                                     </li>
                                 </ul>
                             </nav>
@@ -259,9 +259,9 @@
                                 <nav>
                                     <ul>
                                         <li>@Html.ActionLink("Trang Chủ", "Index", "Home",null, new { @class = "active" })</li>
-                                        <li>@Html.ActionLink("Sản Phẩm", "Index", "SanPham")</li>
+                                        <li>@Html.ActionLink("Sản Phẩm", "Index", "Website")</li>
                                         <li>@Html.ActionLink("Về Chúng Tôi", "About", "Home")</li>
-                                        <li><a href="#">Bài Viết</a></li>
+                                        <li>@Html.ActionLink("Bài Viết", "BaiViet", "Website")</li>
                                         <li>@Html.ActionLink("Liên Hệ", "Contact", "Home")</li>
 
                                     </ul>

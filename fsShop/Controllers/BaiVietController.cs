@@ -1,29 +1,30 @@
-﻿using System;
+﻿using fsShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using fsShop.Models;
+
 namespace fsShop.Controllers
 {
-    public class TheLoaiController : Controller
+    public class BaiVietController : Controller
     {
-        // GET: TheLoai
+        // GET: BaiViet
         fsShopDataContext data = new fsShopDataContext();
         public ActionResult Index()
         {
             if (Session["TaikhoanAdmin"] != null)
             {
-                return View(data.TheLoais.ToList());
+                return View(data.BaiDangs.ToList());
             }
             else
-                return RedirectToAction("Dangnhap", "User");   
+                return RedirectToAction("Dangnhap", "User");
         }
         public ActionResult Details(int id)
         {
             if (Session["TaikhoanAdmin"] != null)
             {
-                var nxb = from n in data.TheLoais where n.MaLoai == id select n;
+                var nxb = from n in data.BaiDangs where n.MaBaiViet == id select n;
                 return View(nxb.Single());
             }
             else
@@ -38,54 +39,54 @@ namespace fsShop.Controllers
             }
             else
                 return RedirectToAction("Dangnhap", "User");
-           
+
         }
         [HttpPost]
-        public ActionResult Create(TheLoai nxb)
+        public ActionResult Create(BaiDang nxb)
         {
-            data.TheLoais.InsertOnSubmit(nxb);
+            data.BaiDangs.InsertOnSubmit(nxb);
             data.SubmitChanges();
-            return RedirectToAction("Index", "TheLoai");
+            return RedirectToAction("Index", "BaiViet");
         }
         [HttpGet]
         public ActionResult Delete(int id)
         {
             if (Session["TaikhoanAdmin"] != null)
             {
-                var tl = from n in data.TheLoais where n.MaLoai == id select n;
+                var tl = from n in data.BaiDangs where n.MaBaiViet == id select n;
                 return View(tl.Single());
             }
             else
                 return RedirectToAction("Dangnhap", "User");
-            
+
         }
         [HttpPost, ActionName("Delete")]
         public ActionResult DXacnhanxoa(int id)
         {
-            TheLoai nxb = data.TheLoais.SingleOrDefault(n => n.MaLoai == id);
-            data.TheLoais.DeleteOnSubmit(nxb);
+            BaiDang nxb = data.BaiDangs.SingleOrDefault(n => n.MaBaiViet == id);
+            data.BaiDangs.DeleteOnSubmit(nxb);
             data.SubmitChanges();
-            return RedirectToAction("Index", "TheLoai");
+            return RedirectToAction("Index", "BaiViet");
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
             if (Session["TaikhoanAdmin"] != null)
             {
-                var nxb = from n in data.TheLoais where n.MaLoai == id select n;
+                var nxb = from n in data.BaiDangs where n.MaBaiViet == id select n;
                 return View(nxb.Single());
             }
             else
                 return RedirectToAction("Dangnhap", "User");
-           
+
         }
         [HttpPost, ActionName("Edit")]
         public ActionResult Capnhat(int id)
         {
-            TheLoai nxb = data.TheLoais.SingleOrDefault(n => n.MaLoai == id);
+            BaiDang nxb = data.BaiDangs.SingleOrDefault(n => n.MaBaiViet == id);
             UpdateModel(nxb);
             data.SubmitChanges();
-            return RedirectToAction("Index", "TheLoai");
+            return RedirectToAction("Index", "BaiViet");
         }
     }
 }

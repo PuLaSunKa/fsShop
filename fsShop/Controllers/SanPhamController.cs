@@ -1,5 +1,5 @@
 ﻿using fsShop.Models;
-using HomeBi.Libraries.PagedList;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,14 +51,25 @@ namespace fsShop.Controllers
 
         public ActionResult Details(int id)
         {
-            var nxb = from n in data.SanPhams where n.MaSanPham == id select n;
-            return View(nxb.Single());
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                var nxb = from n in data.SanPhams where n.MaSanPham == id select n;
+                return View(nxb.Single());
+            } 
+            else
+                return RedirectToAction("Dangnhap", "User");
         }
 
         public ActionResult Delete(int id)
         {
-            var tl = from n in data.SanPhams where n.MaSanPham == id select n;
-            return View(tl.Single());
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                var tl = from n in data.SanPhams where n.MaSanPham == id select n;
+                return View(tl.Single());
+            }
+            else
+                return RedirectToAction("Dangnhap", "User");
+           
         }
         [HttpPost, ActionName("Delete")]
         public ActionResult Xacnhanxoa(int id)
@@ -72,8 +83,13 @@ namespace fsShop.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var nxb = from n in data.SanPhams where n.MaSanPham == id select n;
-            return View(nxb.Single());
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                var nxb = from n in data.SanPhams where n.MaSanPham == id select n;
+                return View(nxb.Single());
+            }
+            else
+                return RedirectToAction("Dangnhap", "User");        
         }
         [HttpPost, ActionName("Edit")]
         public ActionResult Capnhat(int id)

@@ -51,10 +51,13 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="HomeBi.Libraries.PagedList, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HomeBi.Libraries.PagedList.1.0.0\lib\netstandard2.0\HomeBi.Libraries.PagedList.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -133,6 +136,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaiVietController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NhanHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
@@ -147,6 +152,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>fsShop.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Giohang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -243,20 +249,21 @@
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\js\sb-admin-2.min.js" />
     <Content Include="Content\js\summernote.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\ionicons.ttf" />
+    <Content Include="Content\fonts\Simple-Line-Icons.woff2" />
     <Content Include="Models\fsShop.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>fsShop.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\ionicons.ttf" />
-    <Content Include="Content\fonts\Simple-Line-Icons.woff2" />
     <None Include="Models\fsShop.dbml.layout">
       <DependentUpon>fsShop.dbml</DependentUpon>
     </None>
@@ -286,7 +293,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Dangky.cshtml" />
-    <Content Include="Views\TheLoai\Index.cshtml" />
     <Content Include="Views\TheLoai\Details.cshtml" />
     <Content Include="Views\TheLoai\Create.cshtml" />
     <Content Include="Views\TheLoai\Delete.cshtml" />
@@ -308,9 +314,19 @@
     <Content Include="Views\Website\NhanHang.cshtml" />
     <Content Include="Views\Website\SPtheoTheLoai.cshtml" />
     <Content Include="Views\Website\SPTheoNhanHang.cshtml" />
+    <Content Include="Views\TheLoai\Index.cshtml" />
+    <Content Include="Views\BaiViet\Index.cshtml" />
+    <Content Include="Views\BaiViet\Details.cshtml" />
+    <Content Include="Views\BaiViet\Create.cshtml" />
+    <Content Include="Views\BaiViet\Delete.cshtml" />
+    <Content Include="Views\BaiViet\Edit.cshtml" />
+    <Content Include="Views\Website\BaiViet.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Hinhsanpham\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
