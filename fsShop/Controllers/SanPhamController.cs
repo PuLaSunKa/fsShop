@@ -1,5 +1,5 @@
 ﻿using fsShop.Models;
-using HomeBi.Libraries.PagedList;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;

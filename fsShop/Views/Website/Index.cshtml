@@ -1,77 +1,65 @@
-﻿@model IEnumerable<fsShop.Models.SanPham>
+﻿@using fsShop.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<fsShop.Models.SanPham>
+
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container body-content" style="margin-top: 30px;">
+    <div class="col-md-3">
+        <p class="lead">Loại sản phẩm<p>
+        @Html.Action("TheLoai", "Website")
+        <p class="lead">Thương hiệu</p>
+        @Html.Action("NhanHang", "Website")
+    </div>
+    <div class="col-sm-9 col-lg-9 col-md-9">
+        @foreach (var sp in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="product-card">
+                    <div class="product-tumb">
+                        <a href="@Url.Action("ChiTietSanPham", "Website", new { id = sp.MaSanPham})"><img src="~/Content/HinhSanPham/@sp.VideoSanPham" alt="" width="100%"></a>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenSanPham)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaTheLoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaNhanHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TieuDe)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VideoSanPham)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayTao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </th>
-        <th></th>
-    </tr>
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">@sp.TheLoai.TenLoai</span>
+                        <h4 class="title-sp"><a href="@Url.Action("ChiTietSanPham", "Website", new { id = sp.MaSanPham})">@sp.TenSanPham</a></h4>
+                        <p class="meta-sp">@sp.MoTa</p>
+                        <div class="product-bottom-details">
+                            <div class="product-price"><small></small>@String.Format("{0:0,0}", sp.Gia)</div>
+                            <div class="product-links">
+                                <a href="@Url.Action("ThemGiohang", "GioHang", new { id = sp.MaSanPham , strURL= Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenSanPham)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaTheLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaNhanHang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TieuDe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VideoSanPham)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayTao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "ChitietSP", new { id=item.MaSanPham })
-        </td>
-    </tr>
-}
+    </div>
 
-</table>
+
+</div>
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-9">
+            @*<div>
+                    Trang @(Model.PageNumber>Model.PageCount?3:Model.PageNumber) /@Model.PageCount
+                </div>*@
+            <div class="Menutrang">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .Menutran li {
+        display: inline
+    }
+</style>
