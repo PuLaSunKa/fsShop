@@ -12,17 +12,33 @@ namespace fsShop.Controllers
         fsShopDataContext data = new fsShopDataContext();
         public ActionResult Index()
         {
-            return View(data.TheLoais.ToList());
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                return View(data.TheLoais.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "User");   
         }
         public ActionResult Details(int id)
         {
-            var nxb = from n in data.TheLoais where n.MaLoai == id select n;
-            return View(nxb.Single());
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                var nxb = from n in data.TheLoais where n.MaLoai == id select n;
+                return View(nxb.Single());
+            }
+            else
+                return RedirectToAction("Dangnhap", "User");
         }
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Dangnhap", "User");
+           
         }
         [HttpPost]
         public ActionResult Create(TheLoai nxb)
@@ -34,8 +50,14 @@ namespace fsShop.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var tl = from n in data.TheLoais where n.MaLoai == id select n;
-            return View(tl.Single());
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                var tl = from n in data.TheLoais where n.MaLoai == id select n;
+                return View(tl.Single());
+            }
+            else
+                return RedirectToAction("Dangnhap", "User");
+            
         }
         [HttpPost, ActionName("Delete")]
         public ActionResult DXacnhanxoa(int id)
@@ -48,8 +70,14 @@ namespace fsShop.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var nxb = from n in data.TheLoais where n.MaLoai == id select n;
-            return View(nxb.Single());
+            if (Session["TaikhoanAdmin"] != null)
+            {
+                var nxb = from n in data.TheLoais where n.MaLoai == id select n;
+                return View(nxb.Single());
+            }
+            else
+                return RedirectToAction("Dangnhap", "User");
+           
         }
         [HttpPost, ActionName("Edit")]
         public ActionResult Capnhat(int id)
