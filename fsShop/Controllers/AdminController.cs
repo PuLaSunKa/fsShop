@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using fsShop.Models;
-using HomeBi.Libraries.PagedList;
+using PagedList;
 
 namespace fsShop.Controllers
 {

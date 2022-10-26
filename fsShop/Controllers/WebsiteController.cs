@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using fsShop.Models;
-using HomeBi.Libraries.PagedList;
+using PagedList;
 
 namespace fsShop.Controllers
 {
@@ -56,6 +56,22 @@ namespace fsShop.Controllers
                        where s.MaSanPham == id
                        select s;
             return View(sach.Single());
+        }
+        private List<BaiDang> LayBaiVietMoi(int count)
+        {
+            //Sắp xếp sách theo ngày cập nhật, sau đó lấy top @count 
+            return data.BaiDangs.OrderByDescending(a => a.NgayTao).Take(count).ToList();
+        }
+        //int ? page nghĩa là tham số null hoặc tham số là số nguyên
+        public ActionResult BaiViet(int? page)
+        {
+            //Lấy top 5 Album bán chạy nhất
+            var sachmoi = LayBaiVietMoi(15);
+            //Số mẫu tin trên 1 trang
+            int pagesize = 4;
+            //Thứ tự trang truy xuất
+            int pageNum = (page ?? 1);
+            return View(sachmoi.ToPagedList(pageNum, pagesize));
         }
     }
 }
