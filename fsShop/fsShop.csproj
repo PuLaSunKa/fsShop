@@ -194,7 +194,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Dangky.cshtml" />
-    <Content Include="Views\TheLoai\Index.cshtml" />
     <Content Include="Views\TheLoai\Details.cshtml" />
     <Content Include="Views\TheLoai\Create.cshtml" />
     <Content Include="Views\TheLoai\Delete.cshtml" />
@@ -216,6 +215,7 @@
     <Content Include="Views\Website\NhanHang.cshtml" />
     <Content Include="Views\Website\SPtheoTheLoai.cshtml" />
     <Content Include="Views\Website\SPTheoNhanHang.cshtml" />
+    <Content Include="Views\TheLoai\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
