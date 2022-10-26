@@ -15,7 +15,7 @@ namespace fsShop.Controllers
         // GET: SanPham
         public ActionResult Index(int? page)
         {
-            int pagesize = 7;
+            int pagesize = 6;
             int pagenum = (page ?? 1);
             if (Session["TaikhoanAdmin"] != null)
                 return View(data.SanPhams.ToList().ToPagedList(pagenum, pagesize));
@@ -46,7 +46,7 @@ namespace fsShop.Controllers
             //Kiem tra duong dan file
             data.SanPhams.InsertOnSubmit(sp);
             data.SubmitChanges();
-            return RedirectToAction("SanPham", "Admin");
+            return RedirectToAction("Index", "SanPham");
         }
 
         public ActionResult Details(int id)

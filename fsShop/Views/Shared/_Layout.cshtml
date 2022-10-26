@@ -6,39 +6,374 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/favicon.ico">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/Content/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <!-- Main Wrapper Start -->
+    <!--Offcanvas menu area start-->
+    <div class="off_canvars_overlay">
+
+    </div>
+    <div class="offcanvas_menu">
+        <div class="canvas_open">
+            <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+        </div>
+        <div class="offcanvas_menu_wrapper">
+            <div class="canvas_close">
+                <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "User")</li>
-                    <li>@Html.ActionLink("Đăng Ký", "DangKy", "User")</li>
-                </ul>               
+            <div class="welcome_text">
+                <ul>
+                    <li><span>FashionShop:</span> web demo</li>
+                </ul>
+            </div>
+
+            <div class="search_bar">
+                <form action="#">
+                    <input placeholder="Tìm kiếm..." type="text">
+                    <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                </form>
+            </div>
+            <div class="cart_area">
+                <div class="middel_links">
+                    <ul>
+                        <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "User")</li>
+                        <li>/</li>
+                        <li>@Html.ActionLink("Đăng Ký", "DangKy", "User")</li>
+                    </ul>
+
+                </div>
+                <div class="cart_link">
+                    <a href="#"><i class="fa fa-shopping-basket"></i>0 item(s)</a>
+                    <!--mini cart-->
+                    <!--<div class="mini_cart">
+                        <div class="cart_item top">
+                            <div class="cart_img">
+                                <a href="#"><img src="~/Content/img/s-product/product.jpg" alt=""></a>
+                            </div>
+                            <div class="cart_info">
+                                <a href="#">Apple iPhone SE 16GB</a>
+
+                                <span>1x $60.00</span>
+
+                            </div>
+                            <div class="cart_remove">
+                                <a href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                        <div class="cart__table">
+                            <table>
+                                <tbody>
+
+                                    <tr>
+                                        <td class="text-left">Tổng cộng :</td>
+                                        <td class="text-right">$184.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="cart_button view_cart">
+                            <a href="#">Xem giỏ hàng</a>
+                        </div>
+                        <div class="cart_button checkout">
+                            <a href="#">Thanh toán</a>
+                        </div>
+                    </div>-->
+                    <!--mini cart end-->
+                </div>
+            </div>
+            <div id="menu" class="text-left ">
+                <ul class="offcanvas_main_menu">
+                    <li class="menu-item-has-children active">
+                        @Html.ActionLink("Trang Chủ", "Index", "Home")
+                    </li>
+                    <li class="menu-item-has-children">
+                        @Html.ActionLink("Sản Phẩm", "Index", "SanPham")
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Bài Viết</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="my-account.html">my account</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        @Html.ActionLink("Về Chúng Tôi", "About", "Home")
+                    </li>
+                    <li class="menu-item-has-children">
+                        @Html.ActionLink("Liên hệ   ", "Contact", "Home")
+                    </li>
+                </ul>
+            </div>
+            <div class="offcanvas_footer">
+                <span><a href="#"><i class="fa fa-envelope-o"></i> info@fashionshop.com</a></span>
+                <ul>
+                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <!--Offcanvas menu area end-->
+    <!--header area start-->
+    <header class="header_area header_three">
+        <!--header top start-->
+        <div class="header_top">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-12">
+                        <div class="welcome_text">
+                            <ul>
+                                <li><span>Fashion Shop:</span> web demo</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="top_right text-right">
+                            <ul>
+                                <li class="top_links">
+                                    <a href="#">Tài Khoản <i class="ion-chevron-down"></i></a>
+                                    <ul class="dropdown_links">
+                                        <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "User")</li>
+                                        <li>@Html.ActionLink("Đăng Ký", "DangKy", "User")</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header top start-->
+        <!--header middel start-->
+        <div class="header_middel">
+            <div class="container-fluid">
+                <div class="middel_inner">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <div class="search_bar">
+                                <form action="#">
+                                    <input placeholder="Tìm kiếm..." type="text">
+                                    <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="logo">
+                                <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="cart_area">
+                                <div class="cart_link">
+                                    <a href="#"><i class="fa fa-shopping-basket"></i>0 item(s)</a>
+                                    <!--mini cart-->
+                                    <!--<div class="mini_cart">
+                                        <div class="cart_item top">
+                                            <div class="cart_img">
+                                                <a href="#"><img src="~/Content/img/s-product/product.jpg" alt=""></a>
+                                            </div>
+                                            <div class="cart_info">
+                                                <a href="#">Apple iPhone SE 16GB</a>
+
+                                                <span>1x $60.00</span>
+
+                                            </div>
+                                            <div class="cart_remove">
+                                                <a href="#"><i class="ion-android-close"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="cart__table">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-left">Tổng :</td>
+                                                        <td class="text-right">$184.00</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="cart_button view_cart">
+                                            <a href="#">Giỏ Hàng</a>
+                                        </div>
+                                        <div class="cart_button checkout">
+                                            <a href="#">Thanh Toán</a>
+                                        </div>
+                                    </div>-->
+                                    <!--mini cart end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal_menu">
+                    <div class="left_menu">
+                        <div class="main_menu">
+                            <nav>
+                                <ul>
+                                    <li class="active">
+                                        <a href="@Url.Action("Index", "Home")">Home <i class="fa fa-angle-down"></i></a>
+                                    </li>
+                                    <li class="mega_items">
+                                        <a href="@Url.Action("Index", "SanPham")">Sản Phẩm <i class="fa fa-angle-down"></i></a>
+                                      
+                                    </li>
+                                    <li>
+                                        <a href="#">Bài Viết <i class="fa fa-angle-down"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="logo_container">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo/logo.png" alt=""></a>
+                    </div>
+                    <div class="right_menu">
+                        <div class="main_menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="@Url.Action("About", "Home")">Về Chúng Tôi</a></li>
+                                    <li><a href="@Url.Action("Contact", "Home")">Liên Hệ</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header middel end-->
+        <!--header bottom satrt-->
+        <div class="header_bottom sticky-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="main_menu_inner">
+                            <div class="main_menu">
+                                <nav>
+                                    <ul>
+                                        <li>@Html.ActionLink("Trang Chủ", "Index", "Home",null, new { @class = "active" })</li>
+                                        <li>@Html.ActionLink("Sản Phẩm", "Index", "SanPham")</li>
+                                        <li>@Html.ActionLink("Về Chúng Tôi", "About", "Home")</li>
+                                        <li><a href="#">Bài Viết</a></li>
+                                        <li>@Html.ActionLink("Liên Hệ", "Contact", "Home")</li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header bottom end-->
+    </header>
+    <!--header area end-->
+
+    @RenderBody()
+
+
+    <!--footer area start-->
+    <footer class="footer_widgets other_widgets">
+        <div class="footer_top">
+            <div class="container">
+                <div class="footer_top_inner">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
+                            <div class="widgets_container">
+                                <h3>Thông Tin</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li>@Html.ActionLink("Về Chúng Tôi", "About", "Home")</li>
+                                        <li>@Html.ActionLink("Liên Hệ", "Contact", "Home")</li>
+                                        <li><a href="#">Chính Sách giao hàng</a></li>
+                                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                                        <li><a href="#">Điều Khoản &Aacute; Bảo Mật</a></li>
+                                        <li><a href="#">Chính Sách Hoàn Trả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
+                            <div class="widgets_container">
+                                <h3>Bổ sung</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li><a href="#">Thương Hiệu</a></li>
+                                        <li><a href="#">Mã Giảm Giá</a></li>
+                                        <li><a href="#">My Account</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="widgets_container contact_us">
+                                <h3>Liên Hệ</h3>
+                                <div class="footer_contact">
+                                    <p>Địa Chỉ: tp HCM</p>
+                                    <p>Hotline:<a href="tel:+123123123">123123123</a> </p>
+                                    <p>Email: info@fashionshop.com</p>
+                                    <ul>
+                                        <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#" title="youtube"><i class="fa fa-youtube"></i></a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="widgets_container newsletter">
+                                <h3>Nhận Thông Tin Từ Chúng Tôi</h3>
+                                <div class="newleter-content">
+                                    <p>Chât lượng vượt trội. Đăng ký để được miễn phí vận chuyển và trả hàng cho đơn hàng đầu tiên của bạn.</p>
+                                    <div class="subscribe_form">
+                                        <form id="mc-form" class="mc-form footer-newsletter">
+                                            <input id="mc-email" type="email" autocomplete="off" placeholder="Email..." />
+                                            <button id="mc-submit">Đăng Ký !</button>
+                                        </form>
+                                        <!-- mailchimp-alerts Start -->
+                                        <div class="mailchimp-alerts text-centre">
+                                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                                        </div><!-- mailchimp-alerts end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="copyright_area">
+                            <p> &copy; @DateTime.Now.Year <strong> </strong> Made with ❤️ by <a href="#" target="_blank"><strong>demo</strong></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer area end-->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <!-- Plugins JS -->
+    <script src="~/Content/js/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/Content/js/main.js"></script>
 </body>
 </html>

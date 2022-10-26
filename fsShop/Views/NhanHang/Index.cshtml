@@ -5,48 +5,56 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2 style="text-align:center;">QUẢN LÝ DANH SÁCH HÃNG SẢN PHẨM</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </th>
-        <th></th>
-    </tr>
+<div class="container center-block">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HinhAnh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaNhanHang }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaNhanHang }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaNhanHang })
-        </td>
-    </tr>
-}
+    <div class="col-md-12">
+        <p>
+            @Html.ActionLink("THÊM MỚI", "Create", null, new { @class = "btn  btn-success" })
+        </p>
+        <table class="table">
+            <tr>
+                <th width="20%">
+                    Tên Nhãn Hàng
+                </th>
+                <th width="15%">
+                    Hình Ảnh
+                </th>
+                <th width="20%">
+                    Trạng Thái
+                </th>
+                <th width="20%">
+                    Mô Tả
+                </th>
+                <th>
+                    Chức Năng
+                </th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HinhAnh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrangThai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MoTa)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaNhanHang }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Xóa bỏ", "Delete", new { id = item.MaNhanHang }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+</div>

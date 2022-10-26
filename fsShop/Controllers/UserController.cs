@@ -48,10 +48,6 @@ namespace fsShop.Controllers
             {
                 ViewData["Loi4"] = "Phải nhập lại mật khẩu";
             }
-            if (String.IsNullOrEmpty(dienthoai))
-            {
-                ViewData["Loi5"] = "Phải nhập điện thoai";
-            }
             else
             {
                 //Gán giá trị cho đối tượng được tạo mới (kh)
@@ -61,7 +57,7 @@ namespace fsShop.Controllers
                 kh.MatKhau = matkhau;
                 kh.Email = email;
                 kh.DiaChi = diachi;
-                kh.SoDienThoai = Convert.ToDecimal(dienthoai);
+                kh.SoDienThoai = dienthoai;
                 kh.NgaySinh = DateTime.Parse(ngaysinh);
                 kh.VaiTro = 3;
                 data.NguoiDungs.InsertOnSubmit(kh);

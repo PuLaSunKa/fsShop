@@ -5,43 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Dangnhap</h2>
+<section class="user">
+    <div class="user_options-container">
+        <div class="user_options-text">
+            <div class="user_options-unregistered">
 
+            </div>
 
-<h4 style="color:red; text-align:center"> @ViewBag.Thongbao</h4>
-<table align="center">
-    <h3 style="text-align:center">ĐĂNG NHẬP</h3>
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
-        <tr style="height:40px">
-            <td> Tên đăng nhật:</td>
-            <td>
-                @Html.TextBox("TenDN")
-                @ViewData["Loi1"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td align="right">  Mật khẩu:</td>
-            <td>
-                @Html.Password("Matkhau")
-                @ViewData["Loi2"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td></td>
-            <td>
-                <input type="Submit" value="Đăng nhập" />
-            </td>
-        </tr>
-    }
-</table>
-}
+            <div class="user_options-registered">
+                <h2 class="user_unregistered-title">Bạn chưa có tài khoản?</h2>
+                <p class="user_unregistered-text">Hãy nhấn nút "Đăng ký" để tạo tài khoản!</p>
+                <a href="@Url.Action("DangKy", "User")" class="user_unregistered-signup">Đăng Ký</a>
+            </div>
+        </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div class="user_options-forms bounceLeft" id="user_options-forms" style="min-height: 420px;">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            <div class="user_forms-signup">
+                <h2 class="forms_title">Đăng Ký</h2>
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <form class="forms_form">
+                        <fieldset class="forms_fieldset">
+                            <div class="forms_field">
+                                <input type="text" name="TenDN" placeholder="Email" class="forms_field-input" required="" autofocus="">
+                                @ViewData["Loi1"]
+                            </div>
+                            <div class="forms_field">
+                                <input type="password" name="Matkhau" placeholder="Password" class="forms_field-input" required="">
+                                @ViewData["Loi2"]
+                            </div>
+                        </fieldset>
+                        <div class="forms_buttons">
+                            <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+                            <input type="submit" value="Log In" class="forms_buttons-action">
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</section>
