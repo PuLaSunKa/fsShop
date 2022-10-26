@@ -52,6 +52,7 @@ namespace fsShop.Controllers
             data.SanPhams.InsertOnSubmit(sp);
             data.SubmitChanges();
             return RedirectToAction("SanPham", "Admin");
+            //áđâsd
         }
     }
 }
